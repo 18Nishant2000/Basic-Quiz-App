@@ -37,19 +37,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String e=email.getText().toString();
                 String p=password.getText().toString();
-
-                mAuth.createUserWithEmailAndPassword(e,p).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "Registered Successfully...", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this,firstActivity.class));
-                        }
-                        else {
-                            Toast.makeText(MainActivity.this, "Failed!!!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                startActivity(new Intent(MainActivity.this,SignUp.class));
+//
+//                mAuth.createUserWithEmailAndPassword(e,p).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(MainActivity.this, "Registered Successfully...", Toast.LENGTH_SHORT).show();
+//                            startActivity(new Intent(MainActivity.this,firstActivity.class));
+//                        }
+//                        else {
+//                            Toast.makeText(MainActivity.this, "Failed!!!", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
             }
         });
 

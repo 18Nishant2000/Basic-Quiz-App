@@ -7,16 +7,79 @@
     tools:context=".firstActivity">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="356dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginBottom="356dp"
-        android:text="Welcome"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/ques"
+        android:layout_width="337dp"
+        android:layout_height="177dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Loading...."
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/c1"
+        android:layout_width="157dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="22dp"
+        app:layout_constraintEnd_toStartOf="@+id/c2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ques" />
+
+    <Button
+        android:id="@+id/c2"
+        android:layout_width="157dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/c4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/c1"
+        app:layout_constraintTop_toBottomOf="@+id/ques" />
+
+    <Button
+        android:id="@+id/c3"
+        android:layout_width="157dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="22dp"
+        android:layout_marginBottom="126dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/c4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/c1" />
+
+    <Button
+        android:id="@+id/c4"
+        android:layout_width="157dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="41dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/c3"
+        app:layout_constraintTop_toBottomOf="@+id/c2" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/c1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ques" />
 </androidx.constraintlayout.widget.ConstraintLayout>
