@@ -108,46 +108,5 @@ public class firstActivity extends AppCompatActivity {
                 }
             }
         });
-
-//        if(answer.equals(choice1.getText().toString()))
-//        {
-//            choice1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-//        else if (answer.equals(choice2.getText().toString()))
-//        {
-//            choice2.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-//        else if (answer.equals(choice3.getText().toString()))
-//        {
-//            choice3.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-//        else if(answer.equals(choice4.getText().toString()))
-//        {
-//            choice4.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-//        else
-//        {
-//            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-//        }
     }
 }
