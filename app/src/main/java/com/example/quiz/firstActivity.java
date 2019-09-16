@@ -19,34 +19,51 @@ public class firstActivity extends AppCompatActivity {
 
     TextView ques;
     String answer;
-    Button choice1,choice2,choice3,choice4;
+    Button choice1,choice2,choice3,choice4,next;
     FirebaseDatabase database;
     DatabaseReference myRef;
+    int count=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
-        database=FirebaseDatabase.getInstance();
-        myRef=database.getReference("questions/0");
-
         ques=findViewById(R.id.ques);
         choice1=findViewById(R.id.c1);
         choice2=findViewById(R.id.c2);
         choice3=findViewById(R.id.c3);
         choice4=findViewById(R.id.c4);
+        next=findViewById(R.id.next);
+        database=FirebaseDatabase.getInstance();
 
+        next_ques(count);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(count<12){
+                    count+=1;
+                    next_ques(count);
+                }
+                else {
+                    ques.setText("GAME OVER!!");
+                    Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        });
+    }
 
+    void next_ques(int count){
+        myRef=database.getReference("questions/"+count);
         myRef.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String q=dataSnapshot.child("question").getValue().toString();
-                String c1=dataSnapshot.child("choices").child("0").getValue().toString();
-                String c2=dataSnapshot.child("choices").child("1").getValue().toString();
-                String c3=dataSnapshot.child("choices").child("2").getValue().toString();
-                String c4=dataSnapshot.child("choices").child("3").getValue().toString();
+                String c1="A. "+dataSnapshot.child("choices").child("0").getValue().toString();
+                String c2="B. "+dataSnapshot.child("choices").child("1").getValue().toString();
+                String c3="C. "+dataSnapshot.child("choices").child("2").getValue().toString();
+                String c4="D. "+dataSnapshot.child("choices").child("3").getValue().toString();
                 answer=dataSnapshot.child("answer").getValue().toString();
                 ques.setText(q);
                 choice1.setText(c1);
@@ -108,5 +125,6 @@ public class firstActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
