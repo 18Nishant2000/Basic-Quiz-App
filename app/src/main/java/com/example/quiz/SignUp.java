@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ public class SignUp extends AppCompatActivity {
 
     EditText email,password;
     Button signup;
+    TextView signin;
 
     private FirebaseAuth mAuth;
 
@@ -28,9 +30,10 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        email=findViewById(R.id.editText);
-        password=findViewById(R.id.editText2);
-        signup=findViewById(R.id.button);
+        email=findViewById(R.id.email);
+        password=findViewById(R.id.password);
+        signup=findViewById(R.id.signup);
+        signin=findViewById(R.id.signin);
 
         mAuth=FirebaseAuth.getInstance();
 
@@ -39,21 +42,25 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 String e=email.getText().toString();
                 String p=password.getText().toString();
+                mAuth.createUserWithEmailAndPassword(e,p).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(SignUp.this, "Registered Successfully!!", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(SignUp.this,MainActivity.class));
+                        }
+                        else {
+                            Toast.makeText(SignUp.this, "Registration Failed!!!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
 
-                startActivity(new Intent(SignUp.this,firstActivity.class));
-//                mAuth.createUserWithEmailAndPassword(e,p).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if(task.isSuccessful()){
-//                            Toast.makeText(SignUp.this, "Registered Successfully...", Toast.LENGTH_SHORT).show();
-//                            startActivity(new Intent(SignUp.this,firstActivity.class));
-//                        }
-//                        else {
-//                            Toast.makeText(SignUp.this, "Failed!!!", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    }
-//                });
+        signin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignUp.this,MainActivity.class));
             }
         });
 

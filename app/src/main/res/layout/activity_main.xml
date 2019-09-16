@@ -7,15 +7,15 @@
     tools:context=".SignUp">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:layout_marginTop="256dp"
+        android:layout_marginTop="264dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="430dp"
+        android:layout_marginBottom="422dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="E-Mail"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,32 +23,47 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="99dp"
-        android:hint="Password"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="75dp"
         android:layout_marginEnd="99dp"
-        android:layout_marginBottom="290dp"
+        android:layout_marginBottom="343dp"
         android:ems="10"
+        android:hint="Password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/in_sign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="162dp"
-        android:layout_marginBottom="153dp"
-        android:text="Button"
+        android:layout_marginBottom="250dp"
+        android:text="SIGN IN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/password" />
+
+    <TextView
+        android:id="@+id/up_sign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="176dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="176dp"
+        android:layout_marginBottom="161dp"
+        android:text="Not registered? Sign Up here"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
