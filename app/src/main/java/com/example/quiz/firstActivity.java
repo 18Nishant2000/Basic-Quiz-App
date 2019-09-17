@@ -60,10 +60,10 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String q=dataSnapshot.child("question").getValue().toString();
-                String c1="A. "+dataSnapshot.child("choices").child("0").getValue().toString();
-                String c2="B. "+dataSnapshot.child("choices").child("1").getValue().toString();
-                String c3="C. "+dataSnapshot.child("choices").child("2").getValue().toString();
-                String c4="D. "+dataSnapshot.child("choices").child("3").getValue().toString();
+                String c1=dataSnapshot.child("choices").child("0").getValue().toString();
+                String c2=dataSnapshot.child("choices").child("1").getValue().toString();
+                String c3=dataSnapshot.child("choices").child("2").getValue().toString();
+                String c4=dataSnapshot.child("choices").child("3").getValue().toString();
                 answer=dataSnapshot.child("answer").getValue().toString();
                 ques.setText(q);
                 choice1.setText(c1);

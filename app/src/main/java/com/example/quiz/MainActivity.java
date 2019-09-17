@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_main);
 
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,firstActivity.class));
             }
         });
+        //startActivity(new Intent(MainActivity.this,SignUp.class));
 
     }
 }
