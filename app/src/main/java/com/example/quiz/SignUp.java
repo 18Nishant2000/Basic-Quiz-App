@@ -42,19 +42,29 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 String e=email.getText().toString();
                 String p=password.getText().toString();
-                mAuth.createUserWithEmailAndPassword(e,p).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(SignUp.this, "Registered Successfully!!", Toast.LENGTH_SHORT).show();
-                            //startActivity(new Intent(SignUp.this,MainActivity.class));
-                            startActivity(new Intent(SignUp.this,firstActivity.class));
+
+                if(e.isEmpty()){
+                    email.setError("Enter Email");
+                }
+                else if(p.isEmpty()){
+                    password.setError("Enter password");
+                }
+                else{
+                    mAuth.createUserWithEmailAndPassword(e, p).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(SignUp.this, "Registered Successfully!!", Toast.LENGTH_SHORT).show();
+                                //startActivity(new Intent(SignUp.this,MainActivity.class));
+                                startActivity(new Intent(SignUp.this, firstActivity.class));
+                            } else {
+                                Toast.makeText(SignUp.this, "Registration Failed!!!", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else {
-                            Toast.makeText(SignUp.this, "Registration Failed!!!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
+
+
             }
         });
 

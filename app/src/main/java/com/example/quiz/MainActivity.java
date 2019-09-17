@@ -42,18 +42,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String e=email.getText().toString();
                 String p=password.getText().toString();
-                mAuth.signInWithEmailAndPassword(e,p).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(MainActivity.this, "Sign in successfully!!!", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(MainActivity.this,firstActivity.class));
+                if(e.isEmpty()){
+                    email.setError("Enter Email");
+                }
+                else if(p.isEmpty()){
+                    password.setError("Enter password");
+                }
+                else {
+                    mAuth.signInWithEmailAndPassword(e, p).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "Sign in successfully!!!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, firstActivity.class));
+                            } else {
+                                Toast.makeText(MainActivity.this, "Sign in Failed!!!", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        else {
-                            Toast.makeText(MainActivity.this, "Sign in Failed!!!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+                    });
+                }
             }
         });
 
@@ -63,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,SignUp.class));
             }
         });
-        //startActivity(new Intent(MainActivity.this,SignUp.class));
 
     }
 }
