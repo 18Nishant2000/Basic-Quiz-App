@@ -22,7 +22,8 @@ public class firstActivity extends AppCompatActivity {
     Button choice1,choice2,choice3,choice4,next;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    int count=0;
+    int count=0,choice=0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +37,67 @@ public class firstActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         database=FirebaseDatabase.getInstance();
 
+
+        choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+        choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+        choice3.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+        choice4.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+
         next_ques(count);
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(count<12){
+                //choice=0;
+                reset();
+                if(count<=11){
                     count+=1;
+                    choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+                    choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+                    choice3.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
+                    choice4.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
                     next_ques(count);
                 }
                 else {
                     ques.setText("GAME OVER!!");
                     Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
+
                 }
 
             }
         });
+    }
+
+
+    void reset()
+    {
+        choice1.setVisibility(View.VISIBLE);
+        choice2.setVisibility(View.VISIBLE);
+        choice3.setVisibility(View.VISIBLE);
+        choice4.setVisibility(View.VISIBLE);
+    }
+
+    void click(int choice)
+    {
+        if(choice==1){
+            choice2.setVisibility(View.INVISIBLE);
+            choice3.setVisibility(View.INVISIBLE);
+            choice4.setVisibility(View.INVISIBLE);
+        }
+        else if(choice==2){
+            choice1.setVisibility(View.INVISIBLE);
+            choice3.setVisibility(View.INVISIBLE);
+            choice4.setVisibility(View.INVISIBLE);
+        }
+        else if(choice==3){
+            choice2.setVisibility(View.INVISIBLE);
+            choice1.setVisibility(View.INVISIBLE);
+            choice4.setVisibility(View.INVISIBLE);
+        }
+        else{
+            choice2.setVisibility(View.INVISIBLE);
+            choice3.setVisibility(View.INVISIBLE);
+            choice1.setVisibility(View.INVISIBLE);
+        }
     }
 
     void next_ques(int count){
@@ -82,11 +129,15 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice1.getText().toString())){
+                    choice1.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    choice1.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                 }
+                choice=1;
+                click(choice);
             }
         });
 
@@ -94,11 +145,15 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice2.getText().toString())){
+                    choice2.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    choice2.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                 }
+                choice=2;
+                click(choice);
             }
         });
 
@@ -106,11 +161,15 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice3.getText().toString())){
+                    choice3.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    choice3.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                 }
+                choice=3;
+                click(choice);
             }
         });
 
@@ -118,11 +177,15 @@ public class firstActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(answer.equals(choice4.getText().toString())){
+                    choice4.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                 }
                 else {
+                    choice4.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                 }
+                choice=4;
+                click(choice);
             }
         });
 
