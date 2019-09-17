@@ -17,12 +17,12 @@ import com.google.firebase.database.ValueEventListener;
 
 public class firstActivity extends AppCompatActivity {
 
-    TextView ques;
+    TextView ques,score;
     String answer;
     Button choice1,choice2,choice3,choice4,next;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    int count=0,choice=0;
+    int count=0,choice=0,marks;
 
 
     @Override
@@ -35,6 +35,7 @@ public class firstActivity extends AppCompatActivity {
         choice3=findViewById(R.id.c3);
         choice4=findViewById(R.id.c4);
         next=findViewById(R.id.next);
+        score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
 
 
@@ -131,13 +132,17 @@ public class firstActivity extends AppCompatActivity {
                 if(answer.equals(choice1.getText().toString())){
                     choice1.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    marks+=1;
                 }
                 else {
                     choice1.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    marks-=1;
                 }
                 choice=1;
                 click(choice);
+
+                score.setText("Score: "+marks);
             }
         });
 
@@ -147,13 +152,16 @@ public class firstActivity extends AppCompatActivity {
                 if(answer.equals(choice2.getText().toString())){
                     choice2.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    marks+=1;
                 }
                 else {
                     choice2.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    marks-=1;
                 }
                 choice=2;
                 click(choice);
+                score.setText("Score: "+marks);
             }
         });
 
@@ -163,13 +171,16 @@ public class firstActivity extends AppCompatActivity {
                 if(answer.equals(choice3.getText().toString())){
                     choice3.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    marks+=1;
                 }
                 else {
                     choice3.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    marks-=1;
                 }
                 choice=3;
                 click(choice);
+                score.setText("Score: "+marks);
             }
         });
 
@@ -179,13 +190,16 @@ public class firstActivity extends AppCompatActivity {
                 if(answer.equals(choice4.getText().toString())){
                     choice4.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    marks+=1;
                 }
                 else {
                     choice4.setBackgroundColor(getColor(R.color.colorAccent));
                     Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    marks-=1;
                 }
                 choice=4;
                 click(choice);
+                score.setText("Score: "+marks);
             }
         });
 
