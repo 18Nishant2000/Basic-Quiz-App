@@ -2,8 +2,10 @@ package com.example.quiz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,8 @@ public class SignUp extends AppCompatActivity {
     EditText email,password;
     Button signup;
     TextView signin;
+    ConstraintLayout back;
+    AnimationDrawable am;
 
     private FirebaseAuth mAuth;
 
@@ -34,6 +38,13 @@ public class SignUp extends AppCompatActivity {
         password=findViewById(R.id.password);
         signup=findViewById(R.id.signup);
         signin=findViewById(R.id.signin);
+
+
+        back=findViewById(R.id.back);
+        am=(AnimationDrawable) back.getBackground();
+        am.setEnterFadeDuration(3000);
+        am.setExitFadeDuration(1000);
+        am.start();
 
         mAuth=FirebaseAuth.getInstance();
 

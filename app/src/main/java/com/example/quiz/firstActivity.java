@@ -24,7 +24,6 @@ public class firstActivity extends AppCompatActivity {
     DatabaseReference myRef;
     int count=0,choice=0,marks;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +36,6 @@ public class firstActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
-
 
         choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
         choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
@@ -71,33 +69,33 @@ public class firstActivity extends AppCompatActivity {
 
     void reset()
     {
-        choice1.setVisibility(View.VISIBLE);
-        choice2.setVisibility(View.VISIBLE);
-        choice3.setVisibility(View.VISIBLE);
-        choice4.setVisibility(View.VISIBLE);
+        choice1.setEnabled(true);
+        choice2.setEnabled(true);
+        choice3.setEnabled(true);
+        choice4.setEnabled(true);
     }
 
     void click(int choice)
     {
         if(choice==1){
-            choice2.setVisibility(View.INVISIBLE);
-            choice3.setVisibility(View.INVISIBLE);
-            choice4.setVisibility(View.INVISIBLE);
+            choice2.setEnabled(false);
+            choice3.setEnabled(false);
+            choice4.setEnabled(false);
         }
         else if(choice==2){
-            choice1.setVisibility(View.INVISIBLE);
-            choice3.setVisibility(View.INVISIBLE);
-            choice4.setVisibility(View.INVISIBLE);
+            choice1.setEnabled(false);
+            choice3.setEnabled(false);
+            choice4.setEnabled(false);
         }
         else if(choice==3){
-            choice2.setVisibility(View.INVISIBLE);
-            choice1.setVisibility(View.INVISIBLE);
-            choice4.setVisibility(View.INVISIBLE);
+            choice2.setEnabled(false);
+            choice1.setEnabled(false);
+            choice4.setEnabled(false);
         }
         else{
-            choice2.setVisibility(View.INVISIBLE);
-            choice3.setVisibility(View.INVISIBLE);
-            choice1.setVisibility(View.INVISIBLE);
+            choice2.setEnabled(false);
+            choice3.setEnabled(false);
+            choice1.setEnabled(false);
         }
     }
 
@@ -200,6 +198,7 @@ public class firstActivity extends AppCompatActivity {
                 choice=4;
                 click(choice);
                 score.setText("Score: "+marks);
+
             }
         });
 

@@ -1,6 +1,7 @@
 package com.example.quiz;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     Button signin;
     TextView signup;
 
+    ConstraintLayout back;
+    AnimationDrawable am;
+
     private FirebaseAuth mAuth;
 
     @Override
@@ -34,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         password=findViewById(R.id.password);
         signin=(Button) findViewById(R.id.in_sign);
         signup=(TextView) findViewById(R.id.up_sign);
+
+        back=findViewById(R.id.back);
+
+        am=(AnimationDrawable) back.getBackground();
+        am.setEnterFadeDuration(3000);
+        am.setExitFadeDuration(1000);
+        am.start();
 
         mAuth=FirebaseAuth.getInstance();
 
