@@ -73,7 +73,7 @@ public class SignUp extends AppCompatActivity {
                                 Toast.makeText(SignUp.this, "Registered Successfully!!", Toast.LENGTH_SHORT).show();
                                 //startActivity(new Intent(SignUp.this,MainActivity.class));
                                 player.stop();
-                                startActivity(new Intent(SignUp.this, firstActivity.class));
+                                startActivity(new Intent(SignUp.this, MainActivity.class));
                             } else {
                                 Toast.makeText(SignUp.this, "Registration Failed!!!", Toast.LENGTH_SHORT).show();
                             }
