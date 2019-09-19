@@ -27,8 +27,6 @@ public class firstActivity extends AppCompatActivity {
     DatabaseReference myRef;
     int count=0,choice=0,marks,correct=0;
     private MediaPlayer player;
-
-
     private CountDownTimer timer;
     private long timeleft=60000;
 
@@ -45,9 +43,9 @@ public class firstActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
-
-
         time=findViewById(R.id.timer);
+
+
         timer=new CountDownTimer(timeleft,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -71,10 +69,10 @@ public class firstActivity extends AppCompatActivity {
         }.start();
 
 
-
         player=MediaPlayer.create(firstActivity.this,R.raw.m1);
         player.setLooping(true);
         player.start();
+
         next.setEnabled(false);
 
         choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
@@ -86,7 +84,6 @@ public class firstActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //choice=0;
                 reset();
                 next.setEnabled(false);
                 if(count<=10){
@@ -98,7 +95,6 @@ public class firstActivity extends AppCompatActivity {
                     next_ques(count);
                 }
                 else {
-                    //ques.setText("GAME OVER!!");
                     player.stop();
                     Bundle extras=new Bundle();
                     Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
@@ -108,7 +104,6 @@ public class firstActivity extends AppCompatActivity {
                     Intent i=new Intent(firstActivity.this,Statistics.class);
                     i.putExtras(extras);
                     startActivity(i);
-
                 }
 
             }
@@ -118,8 +113,7 @@ public class firstActivity extends AppCompatActivity {
     void updateTimer(){
         int minutes=(int)timeleft/60000;
         int seconds=(int)timeleft%60000/1000;
-        String timeleft=""+minutes;
-        timeleft+=":";
+        String timeleft=""+minutes+":";
         if(seconds<10)
             timeleft+="0";
         timeleft+=seconds;
@@ -134,6 +128,7 @@ public class firstActivity extends AppCompatActivity {
         choice3.setEnabled(true);
         choice4.setEnabled(true);
     }
+
 
     void click(int choice)
     {
@@ -159,6 +154,7 @@ public class firstActivity extends AppCompatActivity {
         }
         next.setEnabled(true);
     }
+
 
     void next_ques(final int count){
         myRef=database.getReference("questions/"+count);
