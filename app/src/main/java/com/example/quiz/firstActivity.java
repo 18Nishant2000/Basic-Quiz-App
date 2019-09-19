@@ -3,6 +3,7 @@ package com.example.quiz;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,13 +20,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class firstActivity extends AppCompatActivity {
 
-    TextView ques,score;
+    TextView ques,score,time;
     String answer;
     Button choice1,choice2,choice3,choice4,next;
     FirebaseDatabase database;
     DatabaseReference myRef;
     int count=0,choice=0,marks,correct=0;
     private MediaPlayer player;
+
+
+    private CountDownTimer timer;
+    private long timeleft=60000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,32 @@ public class firstActivity extends AppCompatActivity {
         next=findViewById(R.id.next);
         score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
+
+
+        time=findViewById(R.id.timer);
+        timer=new CountDownTimer(timeleft,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+                timeleft=millisUntilFinished;
+                updateTimer();
+            }
+
+            @Override
+            public void onFinish() {
+                player.stop();
+                Bundle extras=new Bundle();
+                Toast.makeText(firstActivity.this, "TIME OVER!!!", Toast.LENGTH_SHORT).show();
+                extras.putInt("marks",marks);
+                extras.putInt("ques",count);
+                extras.putInt("correct",correct);
+                Intent i=new Intent(firstActivity.this,Statistics.class);
+                i.putExtras(extras);
+                startActivity(i);
+            }
+        }.start();
+
+
 
         player=MediaPlayer.create(firstActivity.this,R.raw.m1);
         player.setLooping(true);
@@ -81,6 +113,17 @@ public class firstActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    void updateTimer(){
+        int minutes=(int)timeleft/60000;
+        int seconds=(int)timeleft%60000/1000;
+        String timeleft=""+minutes;
+        timeleft+=":";
+        if(seconds<10)
+            timeleft+="0";
+        timeleft+=seconds;
+        time.setText(timeleft);
     }
 
 
