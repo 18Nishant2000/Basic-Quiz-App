@@ -3,6 +3,7 @@ package com.example.quiz;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,7 @@ public class Statistics extends AppCompatActivity {
 
     TextView cans,wans,tques,tmarks;
     Button exit;
+    private MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,10 @@ public class Statistics extends AppCompatActivity {
         tques=findViewById(R.id.tques);
         tmarks=findViewById(R.id.tmarks);
         exit=findViewById(R.id.exit);
+
+        player=MediaPlayer.create(Statistics.this,R.raw.m4);
+        player.setLooping(true);
+        player.start();
 
         Intent i=getIntent();
         Bundle extras=i.getExtras();
@@ -39,7 +45,8 @@ public class Statistics extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onDestroy();
+                finish();
+                moveTaskToBack(true);
             }
         });
 
@@ -48,5 +55,6 @@ public class Statistics extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        player.stop();
     }
 }

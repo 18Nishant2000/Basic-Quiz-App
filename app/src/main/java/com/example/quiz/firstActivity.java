@@ -43,6 +43,7 @@ public class firstActivity extends AppCompatActivity {
         player=MediaPlayer.create(firstActivity.this,R.raw.m1);
         player.setLooping(true);
         player.start();
+        next.setEnabled(false);
 
         choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
         choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
@@ -55,6 +56,7 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //choice=0;
                 reset();
+                next.setEnabled(false);
                 if(count<=10){
                     count+=1;
                     choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
@@ -64,7 +66,8 @@ public class firstActivity extends AppCompatActivity {
                     next_ques(count);
                 }
                 else {
-                    ques.setText("GAME OVER!!");
+                    //ques.setText("GAME OVER!!");
+                    player.stop();
                     Bundle extras=new Bundle();
                     Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
                     extras.putInt("marks",marks);
@@ -111,6 +114,7 @@ public class firstActivity extends AppCompatActivity {
             choice3.setEnabled(false);
             choice1.setEnabled(false);
         }
+        next.setEnabled(true);
     }
 
     void next_ques(final int count){
