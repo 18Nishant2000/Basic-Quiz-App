@@ -2,7 +2,9 @@ package com.example.quiz;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth=FirebaseAuth.getInstance();
 
+        player=MediaPlayer.create(MainActivity.this, R.raw.m3);
+        player.setLooping(true);
+        player.start();
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "Sign in successfully!!!", Toast.LENGTH_SHORT).show();
+                                player.stop();
                                 startActivity(new Intent(MainActivity.this, firstActivity.class));
                             } else {
                                 Toast.makeText(MainActivity.this, "Sign in Failed!!!", Toast.LENGTH_SHORT).show();
@@ -79,9 +87,16 @@ public class MainActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.stop();
                 startActivity(new Intent(MainActivity.this,SignUp.class));
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        player.stop();
     }
 }

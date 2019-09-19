@@ -1,5 +1,7 @@
 package com.example.quiz;
 
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +24,8 @@ public class firstActivity extends AppCompatActivity {
     Button choice1,choice2,choice3,choice4,next;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    int count=0,choice=0,marks;
+    int count=0,choice=0,marks,correct=0;
+    private MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,10 @@ public class firstActivity extends AppCompatActivity {
         score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
 
+        player=MediaPlayer.create(firstActivity.this,R.raw.m1);
+        player.setLooping(true);
+        player.start();
+
         choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
         choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
         choice3.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
@@ -48,7 +55,7 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //choice=0;
                 reset();
-                if(count<=11){
+                if(count<=10){
                     count+=1;
                     choice1.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
                     choice2.setBackgroundColor(getColor(R.color.common_google_signin_btn_text_dark));
@@ -58,7 +65,14 @@ public class firstActivity extends AppCompatActivity {
                 }
                 else {
                     ques.setText("GAME OVER!!");
+                    Bundle extras=new Bundle();
                     Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
+                    extras.putInt("marks",marks);
+                    extras.putInt("ques",count);
+                    extras.putInt("correct",correct);
+                    Intent i=new Intent(firstActivity.this,Statistics.class);
+                    i.putExtras(extras);
+                    startActivity(i);
 
                 }
 
@@ -99,7 +113,7 @@ public class firstActivity extends AppCompatActivity {
         }
     }
 
-    void next_ques(int count){
+    void next_ques(final int count){
         myRef=database.getReference("questions/"+count);
         myRef.addValueEventListener(new ValueEventListener() {
 
@@ -131,6 +145,7 @@ public class firstActivity extends AppCompatActivity {
                     choice1.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
+                    correct+=1;
                 }
                 else {
                     choice1.setBackgroundColor(getColor(R.color.colorAccent));
@@ -151,6 +166,7 @@ public class firstActivity extends AppCompatActivity {
                     choice2.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
+                    correct+=1;
                 }
                 else {
                     choice2.setBackgroundColor(getColor(R.color.colorAccent));
@@ -170,6 +186,7 @@ public class firstActivity extends AppCompatActivity {
                     choice3.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
+                    correct+=1;
                 }
                 else {
                     choice3.setBackgroundColor(getColor(R.color.colorAccent));
@@ -189,6 +206,7 @@ public class firstActivity extends AppCompatActivity {
                     choice4.setBackgroundColor(getColor(R.color.colorPrimary));
                     Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
+                    correct+=1;
                 }
                 else {
                     choice4.setBackgroundColor(getColor(R.color.colorAccent));
@@ -202,5 +220,11 @@ public class firstActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        player.stop();
     }
 }

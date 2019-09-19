@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,6 +29,7 @@ public class SignUp extends AppCompatActivity {
     AnimationDrawable am;
 
     private FirebaseAuth mAuth;
+    private MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,9 @@ public class SignUp extends AppCompatActivity {
         signup=findViewById(R.id.signup);
         signin=findViewById(R.id.signin);
 
+        player=MediaPlayer.create(SignUp.this,R.raw.m2);
+        player.setLooping(true);
+        player.start();
 
         back=findViewById(R.id.back);
         am=(AnimationDrawable) back.getBackground();
@@ -67,6 +72,7 @@ public class SignUp extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Toast.makeText(SignUp.this, "Registered Successfully!!", Toast.LENGTH_SHORT).show();
                                 //startActivity(new Intent(SignUp.this,MainActivity.class));
+                                player.stop();
                                 startActivity(new Intent(SignUp.this, firstActivity.class));
                             } else {
                                 Toast.makeText(SignUp.this, "Registration Failed!!!", Toast.LENGTH_SHORT).show();
@@ -82,9 +88,16 @@ public class SignUp extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                player.stop();
                 startActivity(new Intent(SignUp.this,MainActivity.class));
             }
         });
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        player.stop();
     }
 }
