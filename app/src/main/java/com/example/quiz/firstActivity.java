@@ -6,7 +6,6 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -75,12 +74,12 @@ public class firstActivity extends AppCompatActivity {
             }
         }.start();
 
-        back=findViewById(R.id.back);
-
-        am=(AnimationDrawable) back.getBackground();
-        am.setEnterFadeDuration(1000);
-        am.setExitFadeDuration(1000);
-        am.start();
+//        back=findViewById(R.id.back);
+//
+//        am=(AnimationDrawable) back.getBackground();
+//        am.setEnterFadeDuration(1000);
+//        am.setExitFadeDuration(1000);
+//        am.start();
 
 
         player=MediaPlayer.create(firstActivity.this,R.raw.m1);

@@ -45,11 +45,11 @@ public class SignUp extends AppCompatActivity {
         player.setLooping(true);
         player.start();
 
-        back=findViewById(R.id.back);
-        am=(AnimationDrawable) back.getBackground();
-        am.setEnterFadeDuration(3000);
-        am.setExitFadeDuration(1000);
-        am.start();
+//        back=findViewById(R.id.back);
+//        am=(AnimationDrawable) back.getBackground();
+//        am.setEnterFadeDuration(3000);
+//        am.setExitFadeDuration(1000);
+//        am.start();
 
         mAuth=FirebaseAuth.getInstance();
 
