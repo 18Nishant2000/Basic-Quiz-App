@@ -5,7 +5,7 @@
     android:id="@+id/back"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/first_back"
+    android:background="@drawable/main_back"
     tools:context=".firstActivity">
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_marginTop="126dp"
         android:layout_marginEnd="217dp"
         android:layout_marginBottom="278dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:hint="..."
         android:gravity="center"
         android:background="@drawable/button_round_corner"
@@ -50,7 +50,7 @@
         android:layout_marginTop="126dp"
         android:layout_marginEnd="37dp"
         android:layout_marginBottom="277dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:hint="..."
         android:background="@drawable/button_round_corner"
         android:gravity="center"
@@ -67,7 +67,7 @@
         android:layout_marginTop="33dp"
         android:layout_marginEnd="217dp"
         android:layout_marginBottom="154dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:hint="..."
         android:background="@drawable/button_round_corner"
         android:gravity="center"
@@ -84,7 +84,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="37dp"
         android:layout_marginBottom="154dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:hint="..."
         android:background="@drawable/button_round_corner"
         android:gravity="center"
@@ -102,7 +102,7 @@
         android:layout_marginEnd="162dp"
         android:layout_marginBottom="67dp"
         android:text="NEXT"
-        android:background="@color/light_blue"
+        android:background="@drawable/button_round_corner"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,7 +121,8 @@
         app:layout_constraintBottom_toTopOf="@+id/c1"
         app:layout_constraintEnd_toStartOf="@+id/timer"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ques" />
+        app:layout_constraintTop_toBottomOf="@+id/ques"
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/timer"
@@ -136,6 +137,7 @@
         app:layout_constraintBottom_toTopOf="@+id/c2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/score"
-        app:layout_constraintTop_toBottomOf="@+id/ques" />
+        app:layout_constraintTop_toBottomOf="@+id/ques"
+        android:textSize="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -88,10 +88,10 @@ public class firstActivity extends AppCompatActivity {
 
         next.setEnabled(false);
 
-        choice1.setBackgroundColor(getColor(R.color.dark_blue));
-        choice2.setBackgroundColor(getColor(R.color.dark_blue));
-        choice3.setBackgroundColor(getColor(R.color.dark_blue));
-        choice4.setBackgroundColor(getColor(R.color.dark_blue));
+        choice1.setBackgroundColor(getColor(R.color.light_blue));
+        choice2.setBackgroundColor(getColor(R.color.light_blue));
+        choice3.setBackgroundColor(getColor(R.color.light_blue));
+        choice4.setBackgroundColor(getColor(R.color.light_blue));
 
         next_ques(count);
         next.setOnClickListener(new View.OnClickListener() {
@@ -101,10 +101,10 @@ public class firstActivity extends AppCompatActivity {
                 next.setEnabled(false);
                 if(count<=10){
                     count+=1;
-                    choice1.setBackgroundColor(getColor(R.color.dark_blue));
-                    choice2.setBackgroundColor(getColor(R.color.dark_blue));
-                    choice3.setBackgroundColor(getColor(R.color.dark_blue));
-                    choice4.setBackgroundColor(getColor(R.color.dark_blue));
+                    choice1.setBackgroundColor(getColor(R.color.light_blue));
+                    choice2.setBackgroundColor(getColor(R.color.light_blue));
+                    choice3.setBackgroundColor(getColor(R.color.light_blue));
+                    choice4.setBackgroundColor(getColor(R.color.light_blue));
                     next_ques(count);
                 }
                 else {
