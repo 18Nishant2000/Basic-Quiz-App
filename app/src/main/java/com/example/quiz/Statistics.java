@@ -25,7 +25,7 @@ public class Statistics extends AppCompatActivity {
         tmarks=findViewById(R.id.tmarks);
         exit=findViewById(R.id.exit);
 
-        player=MediaPlayer.create(Statistics.this,R.raw.m4);
+        player=MediaPlayer.create(Statistics.this,R.raw.results);
         player.setLooping(true);
         player.start();
 
@@ -38,7 +38,7 @@ public class Statistics extends AppCompatActivity {
 
         cans.setText("Correct Answers: "+c);
         wans.setText("Wrong answers: "+w);
-        tques.setText("Total Questions "+t);
+        tques.setText("Total Questions: "+t);
         tmarks.setText("Total Marks: "+tm);
 
 

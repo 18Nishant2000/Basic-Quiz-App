@@ -30,10 +30,7 @@ public class firstActivity extends AppCompatActivity {
     int count=0,choice=0,marks,correct=0;
     private MediaPlayer player;
     private CountDownTimer timer;
-    private long timeleft=60000;
-
-    ConstraintLayout back;
-    AnimationDrawable am;
+    private long timeleft=120000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +45,6 @@ public class firstActivity extends AppCompatActivity {
         score=findViewById(R.id.score);
         database=FirebaseDatabase.getInstance();
         time=findViewById(R.id.timer);
-
-
-
 
         timer=new CountDownTimer(timeleft,1000) {
             @Override
@@ -74,15 +68,7 @@ public class firstActivity extends AppCompatActivity {
             }
         }.start();
 
-//        back=findViewById(R.id.back);
-//
-//        am=(AnimationDrawable) back.getBackground();
-//        am.setEnterFadeDuration(1000);
-//        am.setExitFadeDuration(1000);
-//        am.start();
-
-
-        player=MediaPlayer.create(firstActivity.this,R.raw.m1);
+        player=MediaPlayer.create(firstActivity.this,R.raw.game_play);
         player.setLooping(true);
         player.start();
 

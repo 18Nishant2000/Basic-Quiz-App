@@ -25,8 +25,6 @@ public class SignUp extends AppCompatActivity {
     EditText email,password;
     Button signup;
     TextView signin;
-    ConstraintLayout back;
-    AnimationDrawable am;
 
     private FirebaseAuth mAuth;
     private MediaPlayer player;
@@ -41,15 +39,9 @@ public class SignUp extends AppCompatActivity {
         signup=findViewById(R.id.signup);
         signin=findViewById(R.id.signin);
 
-        player=MediaPlayer.create(SignUp.this,R.raw.m2);
+        player=MediaPlayer.create(SignUp.this,R.raw.sign_in_up);
         player.setLooping(true);
         player.start();
-
-//        back=findViewById(R.id.back);
-//        am=(AnimationDrawable) back.getBackground();
-//        am.setEnterFadeDuration(3000);
-//        am.setExitFadeDuration(1000);
-//        am.start();
 
         mAuth=FirebaseAuth.getInstance();
 
