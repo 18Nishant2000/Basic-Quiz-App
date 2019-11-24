@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class Statistics extends AppCompatActivity {
 
     TextView cans,wans,tques,tmarks;
-    Button exit;
+    Button exit,again;
     private MediaPlayer player;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,7 @@ public class Statistics extends AppCompatActivity {
         tques=findViewById(R.id.tques);
         tmarks=findViewById(R.id.tmarks);
         exit=findViewById(R.id.exit);
+        again=findViewById(R.id.again);
 
         player=MediaPlayer.create(Statistics.this,R.raw.results);
         player.setLooping(true);
@@ -47,6 +48,14 @@ public class Statistics extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 moveTaskToBack(true);
+            }
+        });
+
+        again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                player.stop();
+                startActivity(new Intent(Statistics.this,firstActivity.class));
             }
         });
 

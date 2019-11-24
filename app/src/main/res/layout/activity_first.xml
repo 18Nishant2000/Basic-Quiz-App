@@ -15,7 +15,7 @@
         android:layout_marginTop="59dp"
         android:layout_marginEnd="37dp"
         android:layout_marginBottom="495dp"
-        android:fontFamily="@font/graduate"
+        android:fontFamily="@font/baloo"
         android:gravity="center"
         android:hint="..."
         android:textColor="@color/red"
