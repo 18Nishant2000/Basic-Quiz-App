@@ -18,7 +18,7 @@
         android:fontFamily="@font/baloo"
         android:gravity="center"
         android:hint="..."
-        android:textColor="@color/red"
+        android:textColor="@color/white"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
