@@ -185,13 +185,13 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(answer.equals(choice1.getText().toString())){
                     choice1.setBackgroundColor(getColor(R.color.green));
-                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
                     choice1.setBackgroundColor(getColor(R.color.red));
-                    Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
                 choice=1;
@@ -206,13 +206,13 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(answer.equals(choice2.getText().toString())){
                     choice2.setBackgroundColor(getColor(R.color.green));
-                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
                     choice2.setBackgroundColor(getColor(R.color.red));
-                    Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
                 choice=2;
@@ -226,13 +226,13 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(answer.equals(choice3.getText().toString())){
                     choice3.setBackgroundColor(getColor(R.color.green));
-                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
                     choice3.setBackgroundColor(getColor(R.color.red));
-                    Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
                 choice=3;
@@ -246,13 +246,13 @@ public class firstActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(answer.equals(choice4.getText().toString())){
                     choice4.setBackgroundColor(getColor(R.color.green));
-                    Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Correct", Toast.LENGTH_SHORT).show();
                     marks+=1;
                     correct+=1;
                 }
                 else {
                     choice4.setBackgroundColor(getColor(R.color.red));
-                    Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(firstActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
                     marks-=1;
                 }
                 choice=4;
