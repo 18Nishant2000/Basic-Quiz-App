@@ -66,6 +66,7 @@ public class SignUp extends AppCompatActivity {
                                 //startActivity(new Intent(SignUp.this,MainActivity.class));
                                 player.stop();
                                 startActivity(new Intent(SignUp.this, MainActivity.class));
+                                finish();
                             } else {
                                 Toast.makeText(SignUp.this, "Registration Failed!!!", Toast.LENGTH_SHORT).show();
                             }
@@ -82,6 +83,7 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 player.stop();
                 startActivity(new Intent(SignUp.this,MainActivity.class));
+                finish();
             }
         });
 

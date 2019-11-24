@@ -1,6 +1,9 @@
 package com.example.quiz;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,15 +30,17 @@ public class MainActivity extends AppCompatActivity {
     EditText email,password;
     Button signin;
     TextView signup;
-
     private FirebaseAuth mAuth;
-
     private MediaPlayer player;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET)!= PackageManager.PERMISSION_GRANTED){
+            finishAndRemoveTask();
+        }
         email=findViewById(R.id.email);
         password=findViewById(R.id.password);
         signin=findViewById(R.id.in_sign);
@@ -65,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Sign in successfully!!!", Toast.LENGTH_SHORT).show();
                                 player.stop();
                                 startActivity(new Intent(MainActivity.this, firstActivity.class));
+                                finish();
                             } else {
                                 Toast.makeText(MainActivity.this, "Sign in Failed!!!", Toast.LENGTH_SHORT).show();
                             }
@@ -79,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 player.stop();
                 startActivity(new Intent(MainActivity.this,SignUp.class));
+                finish();
             }
         });
 

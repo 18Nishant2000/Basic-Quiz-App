@@ -31,6 +31,7 @@ public class firstActivity extends AppCompatActivity {
     private MediaPlayer player;
     private CountDownTimer timer;
     private long timeleft=120000;
+    static int mov=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +57,19 @@ public class firstActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                player.stop();
-                Bundle extras=new Bundle();
-                Toast.makeText(firstActivity.this, "TIME OVER!!!", Toast.LENGTH_SHORT).show();
-                extras.putInt("marks",marks);
-                extras.putInt("ques",count);
-                extras.putInt("correct",correct);
-                Intent i=new Intent(firstActivity.this,Statistics.class);
-                i.putExtras(extras);
-                startActivity(i);
+                if(mov==0){
+                    player.stop();
+                    Bundle extras=new Bundle();
+                    Toast.makeText(firstActivity.this, "TIME OVER!!!", Toast.LENGTH_SHORT).show();
+                    extras.putInt("marks",marks);
+                    extras.putInt("ques",count);
+                    extras.putInt("correct",correct);
+                    Intent i=new Intent(firstActivity.this,Statistics.class);
+                    i.putExtras(extras);
+                    startActivity(i);
+                }
+                mov=1;
+                finish();
             }
         }.start();
 
@@ -94,15 +99,19 @@ public class firstActivity extends AppCompatActivity {
                     next_ques(count);
                 }
                 else {
-                    player.stop();
-                    Bundle extras=new Bundle();
-                    Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
-                    extras.putInt("marks",marks);
-                    extras.putInt("ques",count);
-                    extras.putInt("correct",correct);
-                    Intent i=new Intent(firstActivity.this,Statistics.class);
-                    i.putExtras(extras);
-                    startActivity(i);
+                    if(mov==0){
+                        player.stop();
+                        Bundle extras=new Bundle();
+                        Toast.makeText(firstActivity.this, "GAME OVER!!!", Toast.LENGTH_SHORT).show();
+                        extras.putInt("marks",marks);
+                        extras.putInt("ques",count);
+                        extras.putInt("correct",correct);
+                        Intent i=new Intent(firstActivity.this,Statistics.class);
+                        i.putExtras(extras);
+                        startActivity(i);
+                    }
+                    mov=1;
+                    finish();
                 }
 
             }
